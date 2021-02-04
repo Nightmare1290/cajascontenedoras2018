@@ -1,0 +1,86 @@
+﻿<%@ Master Language="VB" CodeFile="menu.master.vb" Inherits="menu" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.19.custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="Scripts/jquery-1.7.2.min.js" ></script>
+    <script type="text/javascript" src="Scripts/jquery-ui-1.8.20.js"></script>
+     <link href="Css/Newcss.css" type="text/css" rel="stylesheet"/>
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="divlinea"><div class="iee">INSTITUTO ELECTORAL DEL ESTADO</div></div>
+    <div class="divlinea2"><div class="titulo">Sistema Computacional de Entrega de Documentación y Material Electoral a CDE y CME.</div></div>
+       <div class="PE"> Proceso Electoral Estatal Ordinario 2020-2021 </div>
+
+      <div class="float-left">   <!--MENU DEL ADMINISTRADOR -->
+            <div id="header">
+               <ul class="nav">
+                   <%
+                      If txtadmin.Text = "SI" Then
+                           'CODIGO DEL MENU DE ADMINISTRADOR
+                           Response.Write("<li><a href='#'>Entrega IEE</a><ul><li><a href='CapturaDOEaCDE.aspx'>IEE-CDE Foráneos</a></li><li><a href='CapturaDOEaCMEPuebla.aspx'>IEE-CME Puebla</a></li><li><a href='CapturaDOEaCME.aspx'>IEE-BOLETAS CME</a></li></ul></li>" & _
+                                          "<li><a href='#'>Reportes IEE</a><ul><li><a href='ReportesDOE.aspx'>Reportes</a></li></ul></li>" & _
+                                          "<li><a href='#'>Impresión Recibos IEE</a><ul><li><a href='Impresion.aspx'>Impresión</a></li></ul></li>" & _
+                                          "<li><a href='#'>Sesión</a><ul><li><a href='cerrarsesion.aspx'>Salir</a></li></ul></li>")
+                       Else
+                           If txtadmin.Text = "NO" Then
+                               
+                               If dtto.Text = 9 Or dtto.Text = 10 Or dtto.Text = 11 Or dtto.Text = 16 Or dtto.Text = 17 Or dtto.Text = 19 Or dtto.Text = 20 Then
+                                   Response.Write("<li><a href='#'>Entrega IEE</a><ul><li><a href='CapturaCMEaMDC.aspx'>CDE Puebla - MDC</a></li></ul></li>" & _
+                                                  "<li><a href='#'>Reportes IEE</a><ul><li><a href='ReportesCDEaMDC.aspx'>CDE Puebla - MDC</a></li></ul></li>" & _
+                                                  "<li><a href='#'>Impresión Recibos IEE</a><ul><li><a href='ImpresionCDEPueaMDC.aspx'>CDE Puebla - MDC</a></li></ul></li>" & _
+                                                  "<li><a href='#'>Sesión</a><ul><li><a href='cerrarsesion.aspx'>Salir</a></li></ul></li>")
+                                   
+                               ElseIf dtto.Text = 1 Or dtto.Text = 2 Or dtto.Text = 3 Or dtto.Text = 4 Or dtto.Text = 5 Or dtto.Text = 6 Or dtto.Text = 7 Or dtto.Text = 8 Or dtto.Text = 12 Or dtto.Text = 13 Or dtto.Text = 14 Or dtto.Text = 15 Or dtto.Text = 18 Or dtto.Text = 21 Or dtto.Text = 22 Or dtto.Text = 23 Or dtto.Text = 24 Or dtto.Text = 25 Or dtto.Text = 26 Then
+                                   Response.Write("<li><a href='#'>Entrega CDE-CME</a><ul><li><a href='CapturaCDEaCME.aspx'>CDE Foráneos - CME </a></li><li><a href='CapturaCMEaMDC.aspx'>CME Foráneos - MDC</a></li></ul></li>" & _
+                                                  "<li><a href='#'>Reportes </a><ul><li><a href='ReportesCDEaCME.aspx'>Reportes</a></li></ul></li>" & _
+                                                  "<li><a href='#'>Impresión Recibos</a><ul><li><a href='ImpresionCDEaCME.aspx'>Impresión</a></li></ul></li>" & _
+                                                  "<li><a href='#'>Sesión</a><ul><li><a href='cerrarsesion.aspx'>Salir</a></li></ul></li>")
+                               ElseIf dtto.Text = 27 Then
+                                   Response.Write("<li><a href='#'>Entrega CME PUE - CDE PUE</a><ul><li><a href='Captura_Puebla.aspx'>CME Puebla - CDE Puebla</a></li></ul></li>" & _
+                                                  "<li><a href='#'>Reportes </a><ul><li><a href='Reportpuebla.aspx'>CME Puebla - CDE Puebla</a></li></ul></li>" & _
+                                                  "<li><a href='#'>Impresión Recibos </a><ul><li><a href='ImpresionCMEPueaCDEPue.aspx'>CME Puebla - CDE Puebla</a></li></ul></li>" & _
+                                                  "<li><a href='#'>Sesión</a><ul><li><a href='cerrarsesion.aspx'>Salir</a></li></ul></li>")
+                               Else
+                                   Response.Write("<li><a href='#'>Entrega IEE</a><ul><li><a href='CapturaCMEaMDC.aspx'>CME Foráneos - MDC</a></li></ul></li>" & _
+                                              "<li><a href='#'>Reportes IEE</a><ul><li><a href='ReportesCMEaMDC.aspx'>Reportes</a></li></ul></li>" & _
+                                              "<li><a href='#'>Impresión Recibos IEE</a><ul><li><a href='ImpresionCMEaMDC.aspx'>Impresión</a></li></ul></li>" & _
+                                              "<li><a href='#'>Sesión</a><ul><li><a href='cerrarsesion.aspx'>Salir</a></li></ul></li>")
+                                       
+                               End If
+                           End If
+                       End If
+                      %>
+              </ul>
+           </div>
+        </div>
+      
+
+
+
+    <div class="container">
+    <div class="izq"><asp:image id="Image1" runat="server" ImageUrl="~/Imagenes/LOGO_NUEVO.png" ></asp:image></div>
+    <div class="der"> </div>
+    
+<form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods = "true">
+        </asp:ScriptManager>
+       <asp:TextBox ID="txtadmin" runat="server" Visible="False"></asp:TextBox>
+        <asp:TextBox ID="dtto" runat="server" Visible="False"></asp:TextBox>
+    <asp:TextBox ID="distrito" runat="server" Visible="False"></asp:TextBox>
+        <asp:TextBox ID="municipio" runat="server" Visible="False"></asp:TextBox>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+              
+        </asp:ContentPlaceHolder>
+
+ </form>
+         </div>
+ 
+</body>
+</html>
